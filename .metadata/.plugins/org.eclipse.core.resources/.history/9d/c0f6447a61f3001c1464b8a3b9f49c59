@@ -1,0 +1,21 @@
+package org.fundacionview.ejemplo1.controladores;
+
+import org.fundacionview.ejemplo1.modelos.Usuarios;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ControladorUno {
+	
+	
+	
+	@GetMapping("/")
+	public String index(Model mod) {
+		
+		mod.addAttribute("usuarios",new Usuarios());
+		return "index";
+	}
+	
+
+}
