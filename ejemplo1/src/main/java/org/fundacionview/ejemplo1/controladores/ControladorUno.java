@@ -15,12 +15,21 @@ public class ControladorUno {
 	
 	
 	
+	// DAO
+	
 	@GetMapping("/")
 	public String index(Model mod) {
 		
 		mod.addAttribute("usuarios",new Usuarios());
 		return "index";
 	}
+	
+	
+	@GetMapping("/login")
+	public String login( Model mod ) {
+		return "login";
+	}
+	
 	
 	
 	@PostMapping("/guardar")

@@ -17,11 +17,25 @@
 <form:input path="nombre" type="text"  />
 <form:errors path="nombre"></form:errors>
 
+<br/>
+
 <label >Apellido</label>
 <form:input path="apellidos" type="text"  />
+<form:errors path="apellidos"></form:errors>
+
+<br/>
 
 <label >Edad</label>
 <form:input path="edad" type="number"  />
+<form:errors path="edad"></form:errors>
+
+<br/>
+
+<label >Email</label>
+<form:input path="email" type="text"  />
+<form:errors path="email"></form:errors>
+
+<br/>
 
 
 <button type="submit">Enviar</button>
