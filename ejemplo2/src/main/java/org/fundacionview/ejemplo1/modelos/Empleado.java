@@ -10,6 +10,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.fundacionview.ejemplo1.validaciones.Email_Gmail;
+
 @Entity
 @Table(name = "tbl_empleado")
 public class Empleado {
@@ -19,7 +21,8 @@ public class Empleado {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Size(min = 1,max=10)
+	@Size(min = 1,max=10)	
+	@NotBlank
 	private String nombre;
 	
 	@NotBlank
@@ -27,6 +30,32 @@ public class Empleado {
 	
 	
 	private int id_user;
+
+	@Email_Gmail
+	private String email;
+	
+	// validar que las direcciones de correo coincidan.
+	private String confirmarEmail;
+	
+	// +57-xxxxxxxxx
+	// Crear validacion propia para recibir numeros con indicativo de colombia.
+	// Con validaciones propias o con
+	// @Patter
+	
+	private String telefono;
+	
+	
+	
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 
 	public int getId() {
