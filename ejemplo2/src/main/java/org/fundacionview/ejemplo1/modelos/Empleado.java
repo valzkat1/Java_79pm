@@ -16,7 +16,7 @@ import org.fundacionview.ejemplo1.validaciones.Indicativo_Colombia;
 
 @Entity
 @Table(name = "tbl_empleado")
-@Confirmar_Email
+@Confirmar_Email(groups = {ValidacionesEmpleado.class})
 public class Empleado {
 
 	
