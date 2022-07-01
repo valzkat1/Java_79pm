@@ -24,17 +24,18 @@ public class Empleado {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Size(min = 1,max=10)	
-	@NotBlank
+	@Size(min = 1,max=10,groups = {ValidacionesEmpleado.class})	
+	@NotBlank(groups = {ValidacionesEmpleado.class})
 	private String nombre;
 	
-	@NotBlank
+	@NotBlank(groups = {ValidacionesEmpleado.class})
 	private String tipoID;
 	
 	
 	private int id_user;
 
-	@Email_Gmail
+	@Email_Gmail(groups = {ValidacionesEmpleado.class})
+	@Size(min=3,groups = {ValidacionesLogin.class})
 	private String email;
 	
 	// validar que las direcciones de correo coincidan.
@@ -45,12 +46,26 @@ public class Empleado {
 	// Con validaciones propias o con
 	// @Patter
 	
-	@Indicativo_Colombia
+	@Indicativo_Colombia(groups = {ValidacionesEmpleado.class})
 	private String telefono;
 	
 	
+	@Size(min=5,groups = {ValidacionesLogin.class,ValidacionesEmpleado.class})
+	private String clave;
 	
 	
+	
+	
+
+	public String getClave() {
+		return clave;
+	}
+
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
 
 	public String getConfirmarEmail() {
 		return confirmarEmail;

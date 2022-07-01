@@ -60,5 +60,27 @@ public class ControladorPpal {
 	}
 	
 	
+	@GetMapping("/login")
+	public String login(Model mod) {
+		
+		
+		mod.addAttribute("emp",new Empleado());
+		return "index";
+	}
+	
+	
+	
+	@PostMapping("/login")
+	public String LoginEmple(Model mod,@Valid @ModelAttribute("emp")Empleado em,BindingResult rv) {
+		
+		if(rv.hasErrors()) {
+			return "index";
+		}else {
+		    
+			
+			return "redirect:/";
+		}
+	}
+	
 	
 }
