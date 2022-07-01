@@ -1,8 +1,12 @@
 package org.fundacionview.ejemplo1.controladores;
 
+import java.util.Locale;
+
 import javax.validation.Valid;
 
 import org.fundacionview.ejemplo1.modelos.Empleado;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,10 +17,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ControladorPpal {
+	
+	@Autowired
+	MessageSource mensajes;
+	
+	
 
 	@GetMapping("/")
 	public String crearEmpleado(Model mod) {
 		
+		Locale españa=new Locale("es","ES");
+		Locale US = new Locale("en","US");
+		
+		String textonormal = mensajes.getMessage("textonormal", null, US);
+		
+		String textodinamico = mensajes.getMessage("textdinamico", new String[] {"Victor","Traducciones"},españa);
+		
+		mod.addAttribute("textonormal",textonormal);
+		mod.addAttribute("textodinamico",textodinamico);
 		mod.addAttribute("emp",new Empleado());
 		return "crearempleado";
 	}

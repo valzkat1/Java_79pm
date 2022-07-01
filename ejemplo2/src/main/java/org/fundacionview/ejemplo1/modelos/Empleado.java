@@ -10,10 +10,13 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.fundacionview.ejemplo1.validaciones.Confirmar_Email;
 import org.fundacionview.ejemplo1.validaciones.Email_Gmail;
+import org.fundacionview.ejemplo1.validaciones.Indicativo_Colombia;
 
 @Entity
 @Table(name = "tbl_empleado")
+@Confirmar_Email
 public class Empleado {
 
 	
@@ -42,11 +45,32 @@ public class Empleado {
 	// Con validaciones propias o con
 	// @Patter
 	
+	@Indicativo_Colombia
 	private String telefono;
 	
 	
 	
 	
+
+	public String getConfirmarEmail() {
+		return confirmarEmail;
+	}
+
+
+	public void setConfirmarEmail(String confirmarEmail) {
+		this.confirmarEmail = confirmarEmail;
+	}
+
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 
 	public String getEmail() {
 		return email;
