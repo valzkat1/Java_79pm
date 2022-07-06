@@ -5,6 +5,7 @@ import java.util.Locale;
 import javax.validation.Valid;
 
 import org.fundacionview.ejemplo1.modelos.Empleado;
+import org.fundacionview.ejemplo1.repositorios.RepoEmpleados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,10 @@ public class ControladorPpal {
 	
 	@Autowired
 	MessageSource mensajes;
+	
+	
+	@Autowired
+	RepoEmpleados repoE;
 	
 	
 
@@ -47,8 +52,9 @@ public class ControladorPpal {
 			return "crearempleado";
 		}else {
 		    
+			repoE.save(em);
 			
-			return "index";
+			return "redirect:/listar";
 		}
 	}
 	
@@ -80,6 +86,14 @@ public class ControladorPpal {
 			
 			return "redirect:/";
 		}
+	}
+	
+	
+	@GetMapping("/listar")
+	public String listarEmpleados(Model mod) {
+		
+		mod.addAttribute("listaEmpleados",repoE.findAll());
+		return "listar";
 	}
 	
 	

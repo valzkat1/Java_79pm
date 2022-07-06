@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>     
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+ 
+
+ 
+     
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +17,7 @@
 <body>
 
 <div class="container">
-
+<h3>Crear Empleado</h3>
 <form:form method="POST" action="/crear_empleado" modelAttribute="emp" >
 
 <labe>Nombre</labe>
