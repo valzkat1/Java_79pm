@@ -79,7 +79,7 @@
 	    name: 'Diagnosticos CIE10',
 	    debounceMS: 250,
 	    minLength: 3,
-	    maxResults: 10,
+	    maxResults: 20,
 	    inputSource: document.getElementById('inputText1'),
 	    targetID: document.getElementById('inputID1'),
 	    fetchURL: 'http://localhost:8087/apis/diagnosticos?texto={term}',
