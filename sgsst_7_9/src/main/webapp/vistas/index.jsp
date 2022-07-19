@@ -59,7 +59,7 @@
         
 
         <div class="d-nonx mt-2">
-          <h2>Hidden IDs</h2>
+        
           <div class="mb-3">
             <label for="inputID1" class="form-label">Countries by Capital Code</label>
             <input type="text" class="form-control" id="inputID1" disabled>

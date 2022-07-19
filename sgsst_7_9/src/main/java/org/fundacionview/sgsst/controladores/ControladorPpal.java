@@ -1,18 +1,25 @@
 package org.fundacionview.sgsst.controladores;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.validation.Valid;
 
+import org.fundacionview.sgsst.modelos.Ausentismo;
 import org.fundacionview.sgsst.modelos.CIE10;
 import org.fundacionview.sgsst.modelos.Empleado;
+import org.fundacionview.sgsst.repositorios.Repo_Ausentismos;
 import org.fundacionview.sgsst.repositorios.Repo_Cie10;
 import org.fundacionview.sgsst.repositorios.Repo_Empleados;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,6 +34,19 @@ public class ControladorPpal {
 	@Autowired
 	Repo_Empleados repoEmple;
 	
+	
+	@Autowired
+	Repo_Ausentismos repoAusenti;
+	
+	
+	
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
+	            dateFormat, false));
+	}
 	
 	
 	@GetMapping("/")
@@ -91,8 +111,24 @@ public class ControladorPpal {
 	}
 	
 	@GetMapping("/crearInc")
-	public String crearIncapacidad() {
+	public String crearIncapacidad(Model mod) {
+		
+		mod.addAttribute("ausentismo",new Ausentismo());
 		return "crearIncapacidad";
+	}
+	
+	
+	@PostMapping("/crearIncapacidad")
+	public String guardarIncapacidad(@Valid @ModelAttribute("ausentismo")Ausentismo a,Model mod,BindingResult rv) {
+		
+		if(rv.hasErrors()) {
+			return "crearIncapacidad";
+		}else {
+		
+			
+			repoAusenti.save(a);
+		return "redirect:/listar";
+		}
 	}
 	
 
