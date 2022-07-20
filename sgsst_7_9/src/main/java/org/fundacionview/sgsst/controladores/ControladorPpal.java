@@ -125,6 +125,26 @@ public class ControladorPpal {
 			return "crearIncapacidad";
 		}else {
 		
+			Empleado e=repoEmple.consultarCC(a.getNumID());
+			
+			
+		//	a.setNombre(null);
+		//	a.setApellidos(null)
+			a.setAreaTrabajo(e.getAreaTrabajo());
+			a.setApellidos(e.getApellidos());
+			a.setTipoID(e.getTipoID());
+			
+			
+			double totales[]=calcularPagos(a.getTipoIncapacidad(), a.getTotalDias(), a.getSalarioDia());
+			
+			a.setValorARL(totales[1]);
+			a.setValorEmpresa(totales[0]);
+			a.setValorEPS(totales[2]);
+			a.setValorPensiones(totales[3]);
+			//
+			
+			
+			
 			
 			repoAusenti.save(a);
 		return "redirect:/listar";
@@ -132,4 +152,105 @@ public class ControladorPpal {
 	}
 	
 
+	public double[] calcularPagos(String tipoIncapacidad,int totalDias,double valorDias) {
+		double[] valores=new double[4];  // 0= ValorEmpresa, 1= ValorARL, 2= ValorEPS, 3=ValorPensiones.
+	
+		
+		
+		if(tipoIncapacidad.equals("Enfermedad Comun")) {
+			if(totalDias<3) {
+				valores[0]=totalDias*valorDias;
+				valores[1]=0.0;
+				valores[2]=0.0;
+				valores[3]=0.0;
+				
+			}else if(totalDias<=180) {
+				
+				valores[0]=2*valorDias;
+				valores[1]=0.0;
+				valores[2]=(totalDias-2)*valorDias*0.6667;
+				valores[3]=0.0;
+				
+				
+			}else if(totalDias<=540) {
+				
+				valores[0]=2*valorDias;
+				valores[1]=0.0;
+				valores[2]=(178)*valorDias*0.6667;
+				valores[3]=(totalDias-180)*valorDias*0.5;
+				
+			}else {
+				valores[0]=2*valorDias;
+				valores[1]=0.0;
+				valores[2]=((178)*valorDias*0.6667)+((totalDias-540)*valorDias*0.5);
+				valores[3]=(540-180)*valorDias*0.5;
+				
+			}
+			
+			
+			
+			
+			
+		
+		}else if(tipoIncapacidad.equals("Lic. Maternidad")) {
+			
+			valores[0]=0.0;
+			valores[1]=0.0;
+			valores[2]=totalDias*valorDias;
+			valores[3]=0.0;
+			
+			
+		
+		}else if(tipoIncapacidad.equals("Lic. Paternidad")) {
+			
+			
+			valores[0]=0.0;
+			valores[1]=0.0;
+			valores[2]=totalDias*valorDias;
+			valores[3]=0.0;
+			
+			
+		}else if(tipoIncapacidad.equals("Enfermedad Laboral")) {
+			
+			valores[0]=0.0;
+			valores[1]=totalDias*valorDias;
+			valores[2]=0.0;
+			valores[3]=0.0;
+			
+			
+		}else if(tipoIncapacidad.equals("Accidente de trabajo")) {
+			valores[0]=0.0;
+			valores[1]=totalDias*valorDias;
+			valores[2]=0.0;
+			valores[3]=0.0;
+			
+		}else if(tipoIncapacidad.equals("Fondo Pensiones")) {
+			
+			
+			
+		}else if(tipoIncapacidad.equals("Accedente de Transito")) {
+			
+			if(totalDias<3) {
+				valores[0]=totalDias*valorDias;
+				valores[1]=0.0;
+				valores[2]=0.0;
+				valores[3]=0.0;
+			}else {
+				valores[0]=2*valorDias;
+				valores[1]=(totalDias-2)*valorDias*0.67;
+				valores[2]=0.0;
+				valores[3]=0.0;
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		return valores;
+	}
+	
 }

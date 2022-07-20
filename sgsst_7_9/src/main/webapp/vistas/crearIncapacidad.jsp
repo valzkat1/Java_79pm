@@ -14,7 +14,7 @@
         
          <div class="mb-3 autocompleteBS">
           <label for="nombreEmpleado" class="form-label">Nombre Empleado</label>
-          <input type="text" class="form-control" id="nombreEmpleado">
+          <form:input type="text" path="nombre" class="form-control" id="nombreEmpleado"/>
         </div>
        
         
@@ -23,7 +23,7 @@
         
           <div class="mb-3">
             <label for="IDEmpleado" class="form-label">ID Empleado</label>
-            <input type="text" class="form-control" id="IDEmpleado" >
+            <form:input type="text" class="form-control" id="IDEmpleado"  path="numID" />
           </div>
           
           
@@ -34,7 +34,7 @@
         
          <div class="mb-3 autocompleteBS">
           <label for="inputText1" class="form-label">Diagnosticos</label>
-          <input type="text" class="form-control" id="inputText1">
+          <form:input type="text" class="form-control" id="inputText1" path="" />
         </div>
        
         
@@ -129,7 +129,8 @@
           <form:select path="tipoIncapacidad" class="form-select" id="clasificacion" >
           <form:option value="">- Seleccionar -</form:option>
           <form:option value="Enfermedad Comun">Enfermedad Comun</form:option>
-          <form:option value="Lic. Maternidad/Paternidad">Lic. Maternidad/Paternidad</form:option>
+          <form:option value="Lic. Maternidad">Lic. Maternidad</form:option>
+           <form:option value="Lic. Paternidad">Lic. Paternidad</form:option>
           <form:option value="Enfermedad Laboral">Enfermedad Laboral</form:option>
           <form:option value="Accidente de trabajo">Accidente de trabajo</form:option>
           <form:option value="Fondo Pensiones">Fondo Pensiones</form:option>

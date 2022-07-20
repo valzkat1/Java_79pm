@@ -2,10 +2,13 @@ package org.fundacionview.sgsst.modelos;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +25,17 @@ public class Ausentismo {
 	private String apellidos;
 	private String tipoID;
 	private String numID;
+	private String areaTrabajo;
 	
+	
+	public String getAreaTrabajo() {
+		return areaTrabajo;
+	}
+
+
+	public void setAreaTrabajo(String areaTrabajo) {
+		this.areaTrabajo = areaTrabajo;
+	}
 	private String tipoIncapacidad;
 	private String cargo;
 	private String EPS;
@@ -33,9 +46,52 @@ public class Ausentismo {
 	private int totalDias;
 	private String clasificacion;
 	
+	private double valorEmpresa;
+	private double valorEPS;
+	private double valorARL;
+	private double valorPensiones;
 	
 	
 	
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_diagnostico", referencedColumnName = "id")
+	private CIE10 diagnostico;
+	
+	
+	
+	public CIE10 getDiagnostico() {
+		return diagnostico;
+	}
+	
+	
+	public void setDiagnostico(CIE10 diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+	public double getValorEmpresa() {
+		return valorEmpresa;
+	}
+	public void setValorEmpresa(double valorEmpresa) {
+		this.valorEmpresa = valorEmpresa;
+	}
+	public double getValorEPS() {
+		return valorEPS;
+	}
+	public void setValorEPS(double valorEPS) {
+		this.valorEPS = valorEPS;
+	}
+	public double getValorARL() {
+		return valorARL;
+	}
+	public void setValorARL(double valorARL) {
+		this.valorARL = valorARL;
+	}
+	public double getValorPensiones() {
+		return valorPensiones;
+	}
+	public void setValorPensiones(double valorPensiones) {
+		this.valorPensiones = valorPensiones;
+	}
 	@Override
 	public String toString() {
 		return "Ausentismo [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", tipoID=" + tipoID
