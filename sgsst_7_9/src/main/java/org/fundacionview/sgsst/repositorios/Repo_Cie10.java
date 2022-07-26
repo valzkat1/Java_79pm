@@ -1,6 +1,7 @@
 package org.fundacionview.sgsst.repositorios;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.fundacionview.sgsst.modelos.CIE10;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,5 +33,10 @@ public interface Repo_Cie10  extends JpaRepository<CIE10, Integer> {
 	
 	@Query("FROM CIE10 where id IN (12052,12056,12067)")
 	public ArrayList<CIE10> consultarIN();
+	
+	
+	
+	public Optional<CIE10> findByCodigo(String codigo);
+	
 	
 }

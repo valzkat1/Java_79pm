@@ -9,6 +9,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
+<link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
+
+
 <style>
 
 /*the container must be positioned relative:*/
@@ -52,7 +55,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listar">SGSST</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +67,7 @@
           <a class="nav-link active" aria-current="page" href="/listar">Empleados</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/crearInc">Ausentismos</a>
+          <a class="nav-link" href="/listarIncapacidad">Ausentismos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Usuarios</a>

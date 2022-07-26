@@ -1,5 +1,6 @@
 package org.fundacionview.sgsst.modelos;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +17,11 @@ public class Empleado {
 	private int id;
 	
 	@Size(min = 2,message = "El nombre es requerido")
-	private String nombre;
-	
+	private String nombre;	
 	private String apellidos;
 	private String tipoID;
+	
+	//@Column(unique = true)
 	private String numID;
 	private int salario;
 	private String cargo;

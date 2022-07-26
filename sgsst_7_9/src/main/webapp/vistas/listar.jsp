@@ -6,9 +6,9 @@
 <jsp:include page="cabecera.jsp"/>
 
 
-<h3>Listado de Empleados   &nbsp;<a href="/crear"> <img src="https://findicons.com/files/icons/1014/ivista/256/plus.png" width="40"/></a> </h3>   
-<table class="table">
-<thead>
+<h3>Listado de Empleados   &nbsp; <img style="cursor: pointer;" src="https://findicons.com/files/icons/1014/ivista/256/plus.png" width="40" onclick="direccionar()"/> </h3>   
+<table class="table" id="incapacidades">
+<thead class="table-dark">
   <th>Nombre</th>
   <th>Apellidos</th>
   <th>Documento</th>
@@ -16,7 +16,7 @@
   <th>Cargo</th>
   <th>Editar</th>
   <th>Eliminar</th>
-
+ <th>Usuario</th>
 </thead>
 <tbody>
 <c:forEach items="${listaEmpleados}" var="emp">
@@ -28,6 +28,7 @@
 <td>${emp.getCargo()}</td>
 <td><a href="/editarE?id=${emp.getId()}">Editar</a></td>
 <td><button  onclick="confirmarEliminar(${emp.getId()})" type="button">Eliminar</button></td>
+<td><a href="/crearUser?id=${emp.getId()}">Usuario</a></td>
 </tr>
 
 </c:forEach>
@@ -38,7 +39,11 @@
 
 
 <script>
-
+function direccionar(){
+	
+	window.location.href="/crear";
+	
+}
 function confirmarEliminar(idem){
 	
 	if(confirm("Esta seguro de eliminar el registro?")){
@@ -51,3 +56,9 @@ function confirmarEliminar(idem){
 
 
 <jsp:include page="pie.jsp"/>
+<script>
+
+$(document).ready(function () {
+    $('#incapacidades').DataTable();
+});
+</script>

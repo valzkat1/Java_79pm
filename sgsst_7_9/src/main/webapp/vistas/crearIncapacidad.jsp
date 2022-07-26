@@ -34,7 +34,7 @@
         
          <div class="mb-3 autocompleteBS">
           <label for="inputText1" class="form-label">Diagnosticos</label>
-          <form:input type="text" class="form-control" id="inputText1" path="" />
+          <input type="text" class="form-control" id="inputText1" />
         </div>
        
         
@@ -43,7 +43,7 @@
         
           <div class="mb-3">
             <label for="inputID1" class="form-label">Codigo CIE10</label>
-            <input type="text" class="form-control" id="inputID1" >
+            <form:input type="text" class="form-control" id="inputID1"  path="codigoDiagnosti"/>
           </div>
           
           
@@ -102,7 +102,7 @@
         </div>
               <div class="mb-3 ">
           <label for="inputText1" class="form-label">Cargo</label>
-          <form:input path="cargo" type="number" class="form-control" id="cargo" />
+          <form:input path="cargo" type="text" class="form-control" id="cargo" />
        <form:errors path="cargo"></form:errors>
         </div>
         

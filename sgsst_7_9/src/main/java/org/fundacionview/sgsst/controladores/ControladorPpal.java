@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ControladorPpal {
@@ -141,10 +142,8 @@ public class ControladorPpal {
 			a.setValorEmpresa(totales[0]);
 			a.setValorEPS(totales[2]);
 			a.setValorPensiones(totales[3]);
-			//
-			
-			
-			
+			//			
+			a.setDiagnostico(repoDiagnosticos.findByCodigo(a.getCodigoDiagnosti()).get());
 			
 			repoAusenti.save(a);
 		return "redirect:/listar";
@@ -243,14 +242,57 @@ public class ControladorPpal {
 			}
 			
 		}
-		
-		
-		
-		
-		
-		
+				
 		
 		return valores;
 	}
+	
+	
+	@GetMapping("/listarIncapacidad")
+	public String listarInca(Model mod) {
+		
+		mod.addAttribute("listaIncapacidades",repoAusenti.findAll());
+		return "listarIncapacidad";
+	}
+	
+	@GetMapping("/eliminarEmpleado")
+	public String eliminarEmpleado(Model mod,@RequestParam("id")int id) {
+		
+		repoEmple.deleteById(id);
+		
+		return "redirect:/listar";
+	}
+	
+	
+	@GetMapping("/eliminarInc")
+	public String eliminarInc(Model mod,@RequestParam("id")int id) {
+		
+		repoAusenti.deleteById(id);
+		
+		return "redirect:/listarIncapacidad";
+	}
+	
+	
+	@GetMapping("editarE")
+	public String editarE(Model mod,@RequestParam("id")int id) {
+		
+		
+		//mod.addAttribute("empleado",repoEmple.getById(id));
+		
+		mod.addAttribute("emp",repoEmple.getById(id));
+		return "editarempleado";
+	}
+	
+	
+	@GetMapping("editarI")
+	public String editarI(Model mod,@RequestParam("id")int id) {
+		
+		
+		//mod.addAttribute("empleado",repoEmple.getById(id));
+		mod.addAttribute("ausentismo",repoAusenti.findById(id).get());
+		return "editarIncapacidad";
+	}
+	
+	
 	
 }

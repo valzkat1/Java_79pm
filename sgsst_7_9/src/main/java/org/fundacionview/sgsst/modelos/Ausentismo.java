@@ -52,8 +52,18 @@ public class Ausentismo {
 	private double valorPensiones;
 	
 	
+	private String codigoDiagnosti;
 	
 	
+	
+	public String getCodigoDiagnosti() {
+		return codigoDiagnosti;
+	}
+
+
+	public void setCodigoDiagnosti(String codigoDiagnosti) {
+		this.codigoDiagnosti = codigoDiagnosti;
+	}
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_diagnostico", referencedColumnName = "id")
 	private CIE10 diagnostico;
@@ -74,6 +84,7 @@ public class Ausentismo {
 	public void setValorEmpresa(double valorEmpresa) {
 		this.valorEmpresa = valorEmpresa;
 	}
+	
 	public double getValorEPS() {
 		return valorEPS;
 	}
