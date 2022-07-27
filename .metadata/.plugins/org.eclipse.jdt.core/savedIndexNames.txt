@@ -18,7 +18,6 @@ INDEX VERSION 1.131+C:\Users\savia\EspacioTrabajo_6_8am\Java_79pm\.metadata\.plu
 917062519.index
 1023499775.index
 2267493131.index
-2771105096.index
 3895175299.index
 4235821725.index
 82589021.index

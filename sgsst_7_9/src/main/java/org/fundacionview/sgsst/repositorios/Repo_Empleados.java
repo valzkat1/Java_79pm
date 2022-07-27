@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Repo_Empleados extends JpaRepository<Empleado, Integer>{
+public interface Repo_Empleados extends JpaRepository<Empleado, Long>{
 
 	@Query("FROM Empleado WHERE nombre LIKE %:texto% OR numID LIKE %:texto%")
 	public ArrayList<Empleado> consultaPorNombreo_ID(@Param("texto")String texto);

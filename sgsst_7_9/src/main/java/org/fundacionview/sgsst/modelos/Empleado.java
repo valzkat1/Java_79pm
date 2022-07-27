@@ -10,18 +10,16 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tbl_empleado")
-public class Empleado {
+public class Empleado extends ModeloBase{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+
 	
 	@Size(min = 2,message = "El nombre es requerido")
 	private String nombre;	
 	private String apellidos;
 	private String tipoID;
 	
-	//@Column(unique = true)
+	@Column(unique = true)
 	private String numID;
 	private int salario;
 	private String cargo;
@@ -30,12 +28,7 @@ public class Empleado {
 	private String EPS;
 	private String AFP;
 	private String ARL;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -109,7 +102,7 @@ public class Empleado {
 	}
 	@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", tipoID=" + tipoID
+		return "Empleado [id=, nombre=" + nombre + ", apellidos=" + apellidos + ", tipoID=" + tipoID
 				+ ", numID=" + numID + ", salario=" + salario + ", cargo=" + cargo + ", areaTrabajo=" + areaTrabajo
 				+ ", edad=" + edad + ", EPS=" + EPS + ", AFP=" + AFP + ", ARL=" + ARL + "]";
 	}

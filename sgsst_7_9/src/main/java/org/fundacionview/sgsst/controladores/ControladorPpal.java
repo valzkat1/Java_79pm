@@ -9,9 +9,11 @@ import javax.validation.Valid;
 import org.fundacionview.sgsst.modelos.Ausentismo;
 import org.fundacionview.sgsst.modelos.CIE10;
 import org.fundacionview.sgsst.modelos.Empleado;
+import org.fundacionview.sgsst.modelos.Usuario;
 import org.fundacionview.sgsst.repositorios.Repo_Ausentismos;
 import org.fundacionview.sgsst.repositorios.Repo_Cie10;
 import org.fundacionview.sgsst.repositorios.Repo_Empleados;
+import org.fundacionview.sgsst.repositorios.Repo_Usuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -256,7 +258,7 @@ public class ControladorPpal {
 	}
 	
 	@GetMapping("/eliminarEmpleado")
-	public String eliminarEmpleado(Model mod,@RequestParam("id")int id) {
+	public String eliminarEmpleado(Model mod,@RequestParam("id")Long id) {
 		
 		repoEmple.deleteById(id);
 		
@@ -274,7 +276,7 @@ public class ControladorPpal {
 	
 	
 	@GetMapping("editarE")
-	public String editarE(Model mod,@RequestParam("id")int id) {
+	public String editarE(Model mod,@RequestParam("id")Long id) {
 		
 		
 		//mod.addAttribute("empleado",repoEmple.getById(id));
@@ -293,6 +295,52 @@ public class ControladorPpal {
 		return "editarIncapacidad";
 	}
 	
+	@Autowired
+	Repo_Usuarios repoUsu;
 	
+	@GetMapping("/crearUser")
+	public String crearUser(Model mod,@RequestParam("id")Long id) {
+		
+		Usuario u=repoUsu.buscarPorId_Empleado(id);
+		
+		if(u!=null) {			
+			// Editar Usuario
+			
+			mod.addAttribute("usuario",u);
+			mod.addAttribute("editar",true);
+			mod.addAttribute("titulo","Editar Usuario del empleado "+u.getEmpUnoaUno().getNombre());
+			return "crearUsuario";
+			
+		}else {			
+			// Crear Usuario
+			
+			Empleado e=repoEmple.getById(id);
+			
+			Usuario uu=new Usuario();
+			uu.setEmpUnoaUno(e);
+			mod.addAttribute("usuario",uu);
+			mod.addAttribute("editar",false);
+			mod.addAttribute("titulo","Crear Usuario del empleado "+e.getNombre());
+			return "crearUsuario";
+			
+		}
+		
+		
+	}
 	
+	@PostMapping("/crear_usuario")
+	public String guardarUsuario(@Valid @ModelAttribute("usuario")Usuario u,Model mod,BindingResult rv) {
+		
+		if(rv.hasErrors()) {
+			return "crearUsuario";
+		}else {
+		
+			u.setCreateDate(new Date());
+			u.setLastInDate(new Date());
+			
+			repoUsu.save(u);
+			
+			return "redirect:/listar";
+		}
+	}
 }
