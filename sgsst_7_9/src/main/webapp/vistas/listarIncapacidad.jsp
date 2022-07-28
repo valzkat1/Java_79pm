@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <jsp:include page="cabecera.jsp"/>
 
 
@@ -11,6 +11,7 @@
 <thead class="table-dark">
   <th>Nombres</th> 
   <th>Documento</th>
+   <th>Area</th>
   <th>TipoIncapacidad</th>
   <th>Diagnotico CIE10</th>
   <th>Eps</th>
@@ -27,11 +28,11 @@
 <tr>
 <td>${emp.getNombre()} ${emp.getApellidos()}</td>
 <td>${emp.getNumID()}</td>
-
+<td>${emp.getAreaTrabajo()}</td>
 <td>${emp.getTipoIncapacidad()}</td>
 <td style="font-size:60%">${emp.getDiagnostico().getDiagnostico()}</td>
 <td>${emp.getEPS()}</td>
-<td style="font-size:70%">${emp.getSalarioDia()}</td>
+<td ><fmt:formatNumber type="number" maxFractionDigits="2" value="${emp.getSalarioDia()}" /></td>
 <td style="font-size:60%">${emp.getFechaInicial()}</td>
 <td>${emp.getTotalDias()}</td>
 <td><a href="/editarI?id=${emp.getId()}">Editar</a></td>

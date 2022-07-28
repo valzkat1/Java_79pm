@@ -43,7 +43,14 @@
 
 
 <labe>Area Trabajo</labe>
-<form:input type="text" path="areaTrabajo" class="form-control"/>
+<form:select  path="areaTrabajo" class="form-select">
+<form:option value="Sistemas">Sistemas</form:option>
+<form:option value="Ventas">Ventas</form:option>
+<form:option value="Cartera">Cartera</form:option>
+<form:option value="Oficios">Oficios</form:option>
+<form:option value="Administracion">Administracion</form:option>
+<form:option value="Otros">Otros</form:option>
+</form:select>
 <form:errors path="areaTrabajo"  style="color:red"></form:errors>
 <br/>
 

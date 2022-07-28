@@ -23,10 +23,10 @@
 		<labe>Rol</labe>
 		<form:select  path="roles" class="form-select">
 		
-		<form:option value="">-- Seleccionar</form:option>
-		<form:option value="Consulta">Consultas</form:option>
-		<form:option value="Auxiliar">Auxiliar</form:option>
-		<form:option value="Admin">Administrador</form:option>
+			<form:option value="">-- Seleccionar</form:option>
+			<form:option value="Consulta">Consultas</form:option>
+			<form:option value="Auxiliar">Auxiliar</form:option>
+			<form:option value="Admin">Administrador</form:option>
 		</form:select>
 		<form:errors path="roles"  style="color:red"></form:errors>
 		<br/>

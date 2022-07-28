@@ -34,7 +34,7 @@
         
          <div class="mb-3 autocompleteBS">
           <label for="inputText1" class="form-label">Diagnosticos</label>
-          <input type="text" class="form-control" id="inputText1" />
+          <input type="text" class="form-control" id="inputText1" value="${ausentismo.getDiagnostico().getDiagnostico()}"/>
         </div>
        
         

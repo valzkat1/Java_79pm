@@ -52,7 +52,7 @@ public class ControladorPpal {
 	}
 	
 	
-	@GetMapping("/")
+	@GetMapping({"/","/home"})
 	public String index() {
 		
 		
@@ -148,7 +148,7 @@ public class ControladorPpal {
 			a.setDiagnostico(repoDiagnosticos.findByCodigo(a.getCodigoDiagnosti()).get());
 			
 			repoAusenti.save(a);
-		return "redirect:/listar";
+		return "redirect:/listarIncapacidad";
 		}
 	}
 	
@@ -342,5 +342,20 @@ public class ControladorPpal {
 			
 			return "redirect:/listar";
 		}
+	}
+	
+	@GetMapping("/listaUsuarios")
+	public String listarUsuarios(Model mod) {
+		
+		mod.addAttribute("listaUsuarios",repoUsu.findAll());
+		return "listarUsuarios";
+	}
+	
+	  
+	@GetMapping("/reporteAreas")
+	public String reporteAreas(Model mod) {
+		
+		
+		return "reportesArea";
 	}
 }

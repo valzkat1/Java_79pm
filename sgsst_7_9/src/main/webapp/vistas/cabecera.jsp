@@ -70,11 +70,21 @@
           <a class="nav-link" href="/listarIncapacidad">Ausentismos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Usuarios</a>
+          <a class="nav-link" href="/listaUsuarios">Usuarios</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" tabindex="-1" >Reportes</a>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Reportes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/reporteAreas">Por Area de Trabajo</a></li>
+            <li><a class="dropdown-item" href="#">Por Empleado</a></li>           
+            <li><a class="dropdown-item" href="#">Por tipo de Incapacidad</a></li>
+            <li><a class="dropdown-item" href="#">Por Estado de cuenta</a></li>
+          </ul>
         </li>
+        
+     
       </ul>
     </div>
   </div>
