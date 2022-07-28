@@ -51,8 +51,20 @@ public class Ausentismo {
 	private double valorARL;
 	private double valorPensiones;
 	
+	private Date fechaRegistro;
 	
 	private String codigoDiagnosti;
+	
+	
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
 	
 	
 	

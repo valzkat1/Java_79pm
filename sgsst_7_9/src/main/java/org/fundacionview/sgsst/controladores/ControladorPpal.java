@@ -97,11 +97,10 @@ public class ControladorPpal {
 		
 		if(rv.hasErrors()) {
 			return "crearempleado";
-		}else {
-		
+		}else {		
 			
 			repoEmple.save(e);
-		return "redirect:/listar";
+		    return "redirect:/listar";
 		}
 	}
 	
@@ -144,6 +143,7 @@ public class ControladorPpal {
 			a.setValorEmpresa(totales[0]);
 			a.setValorEPS(totales[2]);
 			a.setValorPensiones(totales[3]);
+			a.setFechaRegistro(new Date());
 			//			
 			a.setDiagnostico(repoDiagnosticos.findByCodigo(a.getCodigoDiagnosti()).get());
 			
@@ -358,4 +358,20 @@ public class ControladorPpal {
 		
 		return "reportesArea";
 	}
+	
+	
+	@PostMapping("/reporteArea")
+	public String generarReporteAreas(Model mod,@RequestParam("area")String area,@RequestParam("fechaInicial")Date fechaIni,@RequestParam("fechaInicial")Date fechaFin) {
+		
+		
+		
+		mod.addAttribute("listaIncapacidades",repoAusenti.findByAreaTrabajo(area));
+		//mod.addAttribute("listaIncapacidades",repoAusenti.consultaConfechas(area,fechaIni,fechaFin));
+		return "ReportesIncapacidad";
+	}
+	
+	
+	
+	
+	
 }

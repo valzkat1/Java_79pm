@@ -11,7 +11,7 @@
 <form method="POST" action="/reporteArea"  >
 <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1">Area de Trabajo</span>		
-<select  path="areaTrabajo" class="form-select">
+<select  path="areaTrabajo" class="form-select" name="area">
 <option value="Sistemas">Sistemas</option>
 <option value="Ventas">Ventas</option>
 <option value="Cartera">Cartera</option>
@@ -20,8 +20,22 @@
 <option value="Otros">Otros</option>
 </select>
 </div>
+<br/>
 
-
+<div  class="row">
+<div class="col">
+<div class="input-group mb-3">
+<span class="input-group-text" >Fecha Inicial</span>		
+<input type="date" name="fechaInicial" class="form-control"/>
+</div>
+</div>
+<div class="col">
+<div class="input-group mb-3">
+<span class="input-group-text" >Fecha Final</span>
+<input type="date" name="fechaFinal" class="form-control"/>
+</div>
+</div>
+</div>
 <button type="submit" class="btn btn-primary">Enviar</button>
 
 </form>
