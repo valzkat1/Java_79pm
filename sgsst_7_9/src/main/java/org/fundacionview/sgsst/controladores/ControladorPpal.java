@@ -361,12 +361,12 @@ public class ControladorPpal {
 	
 	
 	@PostMapping("/reporteArea")
-	public String generarReporteAreas(Model mod,@RequestParam("area")String area,@RequestParam("fechaInicial")Date fechaIni,@RequestParam("fechaInicial")Date fechaFin) {
+	public String generarReporteAreas(Model mod,@RequestParam("area")String area,@RequestParam("fechaInicial")Date fechaIni,@RequestParam("fechaFinal")Date fechaFin) {
 		
 		
 		
-		mod.addAttribute("listaIncapacidades",repoAusenti.findByAreaTrabajo(area));
-		//mod.addAttribute("listaIncapacidades",repoAusenti.consultaConfechas(area,fechaIni,fechaFin));
+		//mod.addAttribute("listaIncapacidades",repoAusenti.findByAreaTrabajo(area));
+		mod.addAttribute("listaIncapacidades",repoAusenti.consultaConfechas(area,fechaIni,fechaFin));
 		return "ReportesIncapacidad";
 	}
 	

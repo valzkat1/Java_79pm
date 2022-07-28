@@ -16,8 +16,8 @@ public interface Repo_Ausentismos extends JpaRepository<Ausentismo, Integer>{
 	public ArrayList<Ausentismo> findByAreaTrabajo(String areaTrabajo);
 	
 	
-	@Query("FROM Ausentismo  WHERE  areaTrabajo=:area AND fechaRegistro BETWEEN :FechaIn AND :fechaFin")
+	@Query("FROM Ausentismo  WHERE  areaTrabajo=:area AND DATE(fechaRegistro) BETWEEN DATE(:FechaIn) AND DATE(:fechaFin)")
 	public ArrayList<Ausentismo> consultaConfechas(@Param("area")String area,@Param("FechaIn")Date FechaIn,@Param("fechaFin")Date fechaFin);
-	
+
 	
 }
